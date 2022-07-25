@@ -1,57 +1,60 @@
-<app-header (buttonClicked)="eventHandler($event)"></app-header>
+<app-header (buttonClicked)="themeHandler($event)"></app-header>
 <main [class.dark-mode]="changeTheme" class="container-fluid">
     <div class="container">
         <a class="neighbours-link back" routerLink="/countries">
             <img class="back-arrow" src="assets/svg/arrow-back-outline.svg"><Span>Back</Span></a>
 
     </div>
-   <div class="container d-flex-column d-flex-between country-card" *ngFor="let country of singleCountryData">
+    <div class="container d-flex-column d-flex-between country-card" *ngFor="let country of singleCountryData">
 
-    <div class="country-flag-container">
-        <img [src]="country.flags.png" [alt]="country.name.common">
-    </div>
-
-    <div class="wrapper mb-2">
-        
-    <div class="country-stats-container">
-        <div class="stats">
-            <h1 class="mt-2">{{country.name.common}}</h1>
-            <p class="country-stat-name">Native name: <span class="country-stat">{{country?.name?.nativeName[firstLanguage]?.common}}</span></p>
-            <p class="country-stat-name">Population: <span class="country-stat">{{country.population | number}}</span></p>
-            <p class="country-stat-name">Region: <span class="country-stat">{{country.region}}</span></p>
-            <p class="country-stat-name">Subregion: <span class="country-stat">{{country.subregion}}</span></p>
-            <p class="country-stat-name">Capital: <span class="country-stat">{{country.capital}}</span></p>
+        <div class="country-flag-container">
+            <img [src]="country.flags.png" [alt]="country.name.common">
         </div>
 
+        <div class="wrapper mb-2">
+            <div class="country-stats-container">
+                <div class="stats">
+                    <h1 class="mt-2">{{country.name.common}}</h1>
+                    <p class="country-stat-name">Native name: <span
+                            class="country-stat">{{country?.name?.nativeName[firstLanguage]?.common}}</span></p>
+                    <p class="country-stat-name">Population: <span class="country-stat">{{country.population |
+                            number}}</span></p>
+                    <p class="country-stat-name">Region: <span class="country-stat">{{country.region}}</span></p>
+                    <p class="country-stat-name">Subregion: <span class="country-stat">{{country.subregion}}</span></p>
+                    <p class="country-stat-name">Capital: <span class="country-stat">{{country.capital}}</span></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="wrapper mb-2">
+            <div class="miscellanous">
+                <p class="country-stat-name">Top Level Domain: <span class="country-stat">{{country.tld}}</span></p>
+                <p class="country-stat-name">Currencies:
+                    <span *ngFor="let curr of currency; let i = index" class="country-stat">{{curr.name |
+                        titlecase}}</span>
+                </p>
+                <p class="country-stat-name">Languages:
+                    <span *ngFor="let lang of languages; let j = index" class="country-stat">{{lang[1]}}<span
+                            *ngIf="j !== languages.length - 1">, </span>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="wrapper">
+            <h3 class="mb-1">Border Countries: </h3>
+            <div class="neighbours">
+                <a class="neighbours-link" routerLink="/country/{{neighbour?.cca3}}"
+                    *ngFor="let neighbour of borderCountriesData">
+                    {{neighbour?.name?.common}}
+                </a>
+            </div>
+            <p *ngIf="borderCountries === undefined">None</p>
+        </div>
+
+
     </div>
-</div>
-
-
-<div class="wrapper mb-2">
-<div class="miscellanous">
-    <p class="country-stat-name">Top Level Domain: <span class="country-stat">{{country.tld}}</span></p>
-    <p class="country-stat-name">Currencies: 
-        <span *ngFor="let curr of currency; let i = index" class="country-stat">{{curr.name | titlecase}}</span></p>
-    <p class="country-stat-name">Languages: 
-    <span *ngFor="let lang of languages; let j = index" class="country-stat">{{lang[1]}}<span *ngIf="j !== languages.length - 1">, </span>
-</span>
-    </p>
-
-</div>
-</div>
-
-
-<div class="wrapper">
-    <h3 class="mb-1">Border Countries: </h3>
-    <div class="neighbours">
-        <a class="neighbours-link" routerLink="/country/{{neighbour?.cca3}}" *ngFor="let neighbour of borderCountriesData">
-            {{neighbour?.name?.common}}
-        </a>
-    </div>
-
-    <p *ngIf="borderCountries === undefined">None</p>
-</div>
-
-
-   </div>
 </main>

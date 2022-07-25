@@ -26,7 +26,7 @@ export class CountryComponent implements OnInit, OnDestroy {
 
   changeTheme: boolean = false;
 
-  eventHandler(event: boolean){
+  themeHandler(event: boolean){
     this.changeTheme = event;
   }
 
@@ -57,7 +57,7 @@ export class CountryComponent implements OnInit, OnDestroy {
 
               this.borderCountries = this.singleCountryData[0].borders;
 
-             this.neighbourCountriesSub = this.countryService.getNeighboursByCode(this.borderCountries).subscribe(
+             this.neighbourCountriesSub = this.countryService?.getNeighboursByCode(this.borderCountries).subscribe(
                 resp=>{
               this.borderCountriesData = resp;
 
