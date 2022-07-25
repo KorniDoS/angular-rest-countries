@@ -1,18 +1,26 @@
-<app-header (buttonClicked)="eventHandler($event)"></app-header>
+<app-header (buttonClicked)="themeHandler($event)"></app-header>
 <main [class.dark-mode]="changeTheme" class="container-fluid">
     <div class="container content">
 
-        <div *ngFor="let country of countriesData" class="country-card">
+        <form class="search-form">
+            <div class="search-input-container">
+                <img src="assets/svg/search-outline.svg" alt="">
+            <input type="text" name="search" placeholder="Search for a country..." [(ngModel)]="searchTerm" 
+            (input)="search(searchTerm)">
+        </div>
+        </form>
+
+        <div *ngFor="let country of countriesData | searchFilter: searchTerm" class="country-card">
 
             <div class="country-flag-container">
                <a routerLink="/country/{{country.cca3}}">
-                <img class="country-flag" src="{{country.flags.png}}" alt="{{country.name.common}}">
+                <img class="country-flag" [src]="country.flags.png" [alt]="country.name.common">
             </a>
             </div>
 
             <div class="country-stats-container">
                 <h2>{{country.name.common}}</h2>
-                <p class="country-stat-name">Population: <span class="country-stat">{{country.population}}</span></p>
+                <p class="country-stat-name">Population: <span class="country-stat">{{country.population | number}}</span></p>
                 <p class="country-stat-name">Region: <span class="country-stat">{{country.region}}</span></p>
                 <p class="country-stat-name">Capital: <span class="country-stat">{{country.capital}}</span></p>
             </div>

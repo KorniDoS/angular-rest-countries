@@ -10,7 +10,11 @@ import { CountryService } from 'src/app/services/country.service';
 export class CountriesComponent implements OnInit, OnDestroy {
 
   changeTheme?: boolean;
-  countriesData:any;
+  countriesData: any;
+
+
+  searchTerm: string = '';
+
 
 
   countryDataSub?:Subscription;
@@ -36,12 +40,18 @@ export class CountriesComponent implements OnInit, OnDestroy {
   }
 
 
-  eventHandler(event: boolean){
+  themeHandler(event: boolean){
     this.changeTheme = event;
   }
 
   ngOnDestroy(): void {
       this.countryDataSub?.unsubscribe();
+  }
+
+  search(value: string): void {
+    this.countriesData.filter((val:any) =>
+      val?.name?.common?.toLowerCase().includes(value));
+      console.log('Trying to search');
   }
 
 }

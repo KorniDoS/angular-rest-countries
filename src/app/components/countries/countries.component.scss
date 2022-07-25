@@ -30,8 +30,8 @@ main.dark-mode{
 
 .country-card{
     width: 80%;
-    min-height: 300px;
-    max-width: 350px;
+    min-height: 320px;
+    max-width: 300px;
     //padding: 1rem;
 
    /* display: flex;
@@ -70,5 +70,46 @@ main.dark-mode{
 
     .country-stat{
         font-weight: 300;
+    }
+}
+
+.search-form{
+    width: 100%;
+
+
+    .search-input-container{
+        width: 100%;
+        height: 3rem;
+        background-color: white;
+        color: colours.$light-mode-input;
+        padding: 2rem;
+        border-radius: 8px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+
+        img{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    input{
+        appearance: none;
+        border: none;
+        width: 100%;
+        height: 2rem;
+        background-color: transparent;
+
+    }
+
+    input:focus{
+        outline: none;
+    }
+
+    ::placeholder{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;    
     }
 }
