@@ -1,0 +1,63 @@
+@use 'src/colours';
+
+header {
+    position: relative;
+    z-index: 2;
+    min-height: 5rem;
+    margin-block: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 6px 0px;
+
+    .call-to-action > h1 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+
+
+    .theme-toggler {
+        font-family: 'Nunito Sans', sans-serif;
+        appearance: none;
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .theme-icon {
+        width: 1.2rem;
+        height: 2.2rem;
+    }
+
+
+    .container {
+        margin-block: 0;
+    }
+}
+
+
+header.dark-mode {
+
+    color: colours.$dark-mode-elements;
+    background-color: colours.$dark-mode-elements;
+
+    div,
+    button {
+        color: colours.$white;
+        background-color: colours.$dark-mode-elements
+    }
+
+
+
+    .light-mode {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(27%) saturate(85%) hue-rotate(266deg) brightness(119%) contrast(100%);
+    }
+}
+
+

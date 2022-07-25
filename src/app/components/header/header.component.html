@@ -1,0 +1,17 @@
+<header [class.dark-mode]="toggledTheme === true" class="container-fluid">
+<div class="container d-flex-between">
+<div class="call-to-action">
+   <h1>Where in the world?</h1>
+</div>
+
+<div class="theme-toggle-container">
+
+    <button class="theme-toggler" (click)="toggleTheme()">
+        <img [class.light-mode]="toggledTheme === true" class="theme-icon" [src]="toggledTheme ? '/assets/svg/moon.svg' : '/assets/svg/moon-outline.svg'"
+         alt="Moon icon">
+        <span>Dark Mode</span>
+    </button>
+
+</div>
+</div>
+</header>
