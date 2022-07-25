@@ -1,0 +1,22 @@
+<app-header (buttonClicked)="eventHandler($event)"></app-header>
+<main [class.dark-mode]="changeTheme" class="container-fluid">
+    <div class="container content">
+
+        <div *ngFor="let country of countriesData" class="country-card">
+
+            <div class="country-flag-container">
+               <a routerLink="/country/{{country.cca3}}">
+                <img class="country-flag" src="{{country.flags.png}}" alt="{{country.name.common}}">
+            </a>
+            </div>
+
+            <div class="country-stats-container">
+                <h2>{{country.name.common}}</h2>
+                <p class="country-stat-name">Population: <span class="country-stat">{{country.population}}</span></p>
+                <p class="country-stat-name">Region: <span class="country-stat">{{country.region}}</span></p>
+                <p class="country-stat-name">Capital: <span class="country-stat">{{country.capital}}</span></p>
+            </div>
+        </div>
+
+    </div>
+</main>

@@ -1,0 +1,74 @@
+@use 'src/colours';
+
+main{
+    background-color: colours.$light-mode-background;
+    min-height: 100vh;
+    margin-block: 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+main.dark-mode{
+    background-color: colours.$dark-mode-background;
+
+    .country-card{
+        background-color: colours.$dark-mode-elements;
+        color: white;
+    }
+}
+
+.content{
+    background-color: transparent;
+    margin-block-start: 0;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    gap: 2.5rem;
+}
+
+.country-card{
+    width: 80%;
+    min-height: 300px;
+    max-width: 350px;
+    //padding: 1rem;
+
+   /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;*/
+
+    background-color: white;
+    border-radius: 8px;
+
+
+
+    
+
+    .country-flag{
+        width: 100%;
+       // height: 100px;
+       max-height: 100%;
+       border-radius: 8px 8px 0 0;
+    }
+
+    .country-stats-container{
+        padding: 1rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+
+        h2{
+            margin-block-end: .5rem;
+        }
+    }
+
+
+    .country-stat-name{
+        font-weight: 600;
+    }
+
+    .country-stat{
+        font-weight: 300;
+    }
+}
