@@ -18,8 +18,8 @@ export class CountryService {
     return this.http.get<any[]>(this.apiBaseUrl + 'all');
   }
 
-  getCountryByName(name: string):Observable<any>{
-    return this.http.get<any[]>(this.apiBaseUrl + 'alpha?codes=' + name);
+  getCountryByCode(code: string):Observable<any>{
+    return this.http.get<any[]>(this.apiBaseUrl + 'alpha?codes=' + code);
   }
 
   getNeighboursByCode(codes: string):Observable<any[]>{
