@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-using-angular-and-scss--vrDrqkYzY](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-using-angular-and-scss--vrDrqkYzY)
+- Live Site URL: [https://rest-countries-kornidos.netlify.app](https://rest-countries-kornidos.netlify.app)
 
 ## My process
 
