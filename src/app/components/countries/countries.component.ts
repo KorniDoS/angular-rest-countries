@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CountryService } from 'src/app/services/country.service';
+import { NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-countries',
@@ -23,10 +24,16 @@ export class CountriesComponent implements OnInit, OnDestroy {
 
   countryDataSub?: Subscription;
 
-  constructor(private countryService: CountryService) { }
+  constructor(private countryService: CountryService, private spinner: NgxSpinnerService) { }
 
 
   ngOnInit(): void {
+    
+   this.spinner.show();
+   setTimeout(() => {
+     this.spinner.hide();
+   }, 2000);
+    
     this.countryDataSub = this.countryService.getAllCountries().subscribe(
       res => {
         this.countriesData = res;
@@ -39,8 +46,6 @@ export class CountriesComponent implements OnInit, OnDestroy {
     }
 
   }
-
-
   themeHandler(event: boolean) {
     this.changeTheme = event;
   }
