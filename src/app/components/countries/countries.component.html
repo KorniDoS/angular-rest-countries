@@ -1,16 +1,33 @@
 <app-header (buttonClicked)="themeHandler($event)"></app-header>
 <main [class.dark-mode]="changeTheme" class="container-fluid">
+    <div class="container search_filters">
+    <form class="search-form">
+        <div class="search-input-container">
+            <img src="assets/svg/search-outline.svg" alt="">
+        <input type="text" name="search" placeholder="Search for a country..." [(ngModel)]="searchTerm" 
+        (input)="search(searchTerm)">
+    </div>
+    </form>
+
+
+    <form>
+    <select class="region-filter" name="filters" [(ngModel)]="selectedRegion" (change)="filterRegion($event)">
+        <option value="none" hidden>Filter by Region</option>
+        <option value="All">All Regions</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+    </select>
+
+    
+  </form>
+    </div>
+
     <div class="container content">
 
-        <form class="search-form">
-            <div class="search-input-container">
-                <img src="assets/svg/search-outline.svg" alt="">
-            <input type="text" name="search" placeholder="Search for a country..." [(ngModel)]="searchTerm" 
-            (input)="search(searchTerm)">
-        </div>
-        </form>
-
-        <div *ngFor="let country of countriesData | searchFilter: searchTerm" class="country-card">
+        <div *ngFor="let country of countriesDataCopy | searchFilter: searchTerm" class="country-card">
 
             <div class="country-flag-container">
                <a routerLink="/country/{{country.cca3}}">

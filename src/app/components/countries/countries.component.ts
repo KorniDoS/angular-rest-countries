@@ -11,10 +11,14 @@ export class CountriesComponent implements OnInit, OnDestroy {
 
   changeTheme?: boolean;
   countriesData: any;
+  countriesDataCopy: any;
 
 
   searchTerm: string = '';
 
+  selectedRegion: any = 'none';
+
+  filteredCountries: any[] = [];
 
 
   countryDataSub?:Subscription;
@@ -26,6 +30,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
     this.countryDataSub = this.countryService.getAllCountries().subscribe(
       res=>{
         this.countriesData = res;
+        this.countriesDataCopy = this.countriesData;
         console.dir(this.countriesData);
       }
     )
@@ -52,6 +57,22 @@ export class CountriesComponent implements OnInit, OnDestroy {
     this.countriesData.filter((val:any) =>
       val?.name?.common?.toLowerCase().includes(value));
       console.log('Trying to search');
+  }
+
+  filterRegion(event: any){
+    console.log(event.target.value);
+    this.selectedRegion = event.target.value;
+
+    if(this.selectedRegion === 'All'){
+      this.countriesDataCopy = this.countriesData;
+    } else {
+
+    
+
+    this.countriesDataCopy = this.countriesData.filter((item: any) => item.region === this.selectedRegion);
+
+    console.log(this.countriesDataCopy);
+    }
   }
 
 }
