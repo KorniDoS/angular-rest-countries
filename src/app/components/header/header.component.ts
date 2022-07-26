@@ -29,15 +29,14 @@ export class HeaderComponent implements OnInit {
     if(window.localStorage.getItem('toggledTheme')){
       this.toggledTheme = !this.toggledTheme;
       window.localStorage.removeItem('toggledTheme');
-     // window.localStorage.setItem('toggledTheme', `${this.toggledTheme}`);
       this.buttonClicked.emit(this.toggledTheme);
+
     } else {
+      
       this.toggledTheme = !this.toggledTheme;
       window.localStorage.setItem('toggledTheme', `${this.toggledTheme}`);
       this.buttonClicked.emit(this.toggledTheme);
     }
-    //this.toggledTheme = !this.toggledTheme;
-    //this.buttonClicked.emit(this.toggledTheme);
 
   
   }
