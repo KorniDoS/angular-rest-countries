@@ -168,5 +168,10 @@ body{
     margin-block-start: 2rem !important;
 }
 
-
-
+.attribution{
+    font-size: 1.2rem;
+    text-align: center;
+    a:link, a:visited{
+        color: hsl(192, 100%, 37%);
+    }
+}
