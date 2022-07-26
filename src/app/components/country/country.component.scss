@@ -1,24 +1,29 @@
 @use 'src/colours';
 
-main{
+main {
     background-color: colours.$light-mode-background;
     min-height: 100vh;
     margin-block: 0;
     font-family: 'Nunito Sans', sans-serif;
 }
 
-main.dark-mode{
+main.dark-mode {
     background-color: colours.$dark-mode-background;
 
-    .container, .container-fluid, .country-card{
+    .container,
+    .container-fluid,
+    .country-card {
         background-color: colours.$dark-mode-background;
         color: white;
     }
-    .back, .neighbours-link{
+
+    .back,
+    .neighbours-link {
         background-color: colours.$dark-mode-elements;
         color: white;
     }
-    .back-arrow{
+
+    .back-arrow {
         filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(278deg) brightness(104%) contrast(102%);
     }
 
@@ -27,47 +32,51 @@ main.dark-mode{
 
 }
 
-html{
+html {
     font-size: 16px;
 }
 
-.container{
+.container {
     width: 375px;
     margin-block-start: 0;
 }
-.country-stats-container{
-    //width: 100%;
-    //padding: 1rem 2rem 2rem;
-    //width: 375px;
+
+.country-stats-container {
     display: flex;
     flex-direction: column;
 
-    h2{
+    h2 {
         margin-block-end: .5rem;
     }
 }
 
 
-.country-stat-name{
+.country-stat-name {
     font-weight: 600;
 }
 
-.country-stat{
+.country-stat {
     font-weight: 300;
 }
 
-.wrapper{
+.wrapper {
     width: 100%;
+
+    @media screen and (min-width: 992px) {
+        width: unset;
+
+    }
 }
 
-h1{
-    margin-block: 1rem;
-}
-p{
+h1 {
     margin-block: 1rem;
 }
 
-.neighbours-link{
+p {
+    margin-block: 1rem;
+}
+
+.neighbours-link {
     display: inline-block;
     padding: .5rem 2rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 3px 10px 0px;
@@ -78,15 +87,98 @@ p{
     text-align: center;
 }
 
-.back{
+.back {
     display: inline-flex;
     margin-block-end: 0;
     align-items: center;
     gap: 0.5rem;
     padding: .5rem 1.5rem;
-   
+
 }
 
-.back-arrow{
+.back-arrow {
     width: 1.5rem;
+}
+
+.country-card {
+
+    .country-flag-container>img:nth-child(1) {
+        width: 100%;
+    }
+
+
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+        column-gap: 4rem;
+
+        .stats h1{
+            margin-block-start: 0 !important;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 5rem;
+        }
+
+        .country-flag-container {
+            align-self: baseline;
+        }
+
+        .country-flag-container>img:nth-child(1) {
+            width: 34rem;
+            height: 25rem;
+        }
+
+
+        div.wrapper:nth-child(3) {
+            flex-grow: 1;
+        }
+
+
+        .country-stats-container {
+            flex-grow: 1;
+        }
+
+
+        div.wrapper:nth-child(1) {
+            flex-grow: 2;
+        }
+
+
+
+        div.container:nth-child(2) {
+            column-gap: 4rem;
+        }
+
+
+
+        div.mb-2:nth-child(2) {
+            flex-grow: 3;
+        }
+
+
+
+    }
+
+    @media screen and (min-width: 1200px) {
+        .stats-container{
+        width: 42rem;
+    }
+    }
+   
+
+
+    @media screen and (min-width: 1400px) {
+        column-gap: 12rem;
+
+        .country-flag-container>img:nth-child(1) {
+            width: 37rem;
+         
+        }
+
+    }
+
+
 }

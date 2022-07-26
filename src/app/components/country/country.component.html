@@ -8,9 +8,11 @@
     <div class="container d-flex-column d-flex-between country-card" *ngFor="let country of singleCountryData">
 
         <div class="country-flag-container">
-            <img [src]="country.flags.png" [alt]="country.name.common">
+            <img [src]="country.flags.svg" [alt]="country.name.common">
         </div>
 
+        <div class="wrapper stats-container">
+    
         <div class="wrapper mb-2">
             <div class="country-stats-container">
                 <div class="stats">
@@ -54,7 +56,14 @@
             </div>
             <p *ngIf="borderCountries === undefined">None</p>
         </div>
+        </div>
 
 
     </div>
 </main>
+
+<ngx-spinner 
+bdColor="{{changeTheme ? 'hsl(207deg, 26%, 17%)' : 'hsl(0deg, 0%, 96%)'}}" 
+type="ball-spin"
+color="{{changeTheme ? 'white' : 'black'}}"
+></ngx-spinner>
