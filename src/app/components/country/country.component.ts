@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { CountryService } from 'src/app/services/country.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
+import {NgxSpinnerService} from 'ngx-spinner';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.scss']
 })
-export class CountryComponent implements OnInit, OnDestroy {
+export class CountryComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  constructor(private countryService: CountryService, private route: ActivatedRoute) { }
+  constructor(private countryService: CountryService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   singleCountryData?: any;
   singleCountryDataSub?: Subscription;
@@ -30,9 +30,16 @@ export class CountryComponent implements OnInit, OnDestroy {
     this.changeTheme = event;
   }
 
+  ngAfterViewInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
+
+  }
 
   ngOnInit(): void {
-
+    
 
     if (window.localStorage.getItem('toggledTheme')) {
       this.changeTheme = true;
